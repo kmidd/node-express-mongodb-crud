@@ -1,0 +1,23 @@
+{
+  "name": "big-mac-team-4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "nodemon ./app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.5.3",
+    "express": "^4.17.1",
+    "express-mongo-db": "^2.0.4",
+    "mongodb": "^3.6.2",
+    "node-sass-middleware": "^0.11.0",
+    "nunjucks": "^3.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.5"
+  }
+}

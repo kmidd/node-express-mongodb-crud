@@ -18,30 +18,35 @@
     </nav>
 
     <div class="container">
+      <p>
+        <a class="btn btn-primary" data-toggle="collapse" href="#showAddCard" role="button" aria-expanded="false" aria-controls="showAddCard">Add To-do</a>
+      </p>
       <div class="card">
-        <div class="card-body">
-          <form class="col-12" action="/" method="POST">
+        <div class="collapse multi-collapse" id="showAddCard">
+          <div class="card-body">
+            <form class="col-12" action="/" method="POST">
 
-            <div class="form-row">
-              <div class="form-group col-xs-12 col-md-8">
-                <label for="task">Task</label>
-                <input class="form-control" type="text" id="task" name="task" required>
+              <div class="form-row">
+                <div class="form-group col-xs-12 col-md-8">
+                  <label for="task">Task</label>
+                  <input class="form-control" type="text" id="task" name="task" required="required">
+                </div>
+
+                <div class="form-group col-xs-12 col-md-4">
+                  <label for="todoDate">Do-by</label>
+                  <input class="form-control" type="date" value="2011-08-19" id="doByDate" name="doByDate" required="required">
+                </div>
               </div>
 
-              <div class="form-group col-xs-12 col-md-4">
-                <label for="todoDate">Do-by</label>
-                <input class="form-control" type="date" value="2011-08-19" id="doByDate" name="doByDate" required>
+              <div class="form-row">
+                <div class="form-group col-12">
+                  <label for="description">Description</label>
+                  <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                </div>
               </div>
+
+              <button type="submit" class="btn btn-primary">Add</button>
             </div>
-
-            <div class="form-row">
-              <div class="form-group col-12">
-                <label for="description">Description</label>
-                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
-              </div>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Add</button>
           </div>
         </div>
       </form>

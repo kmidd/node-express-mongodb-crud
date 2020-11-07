@@ -33,6 +33,7 @@ router.post("/", function (req, res, next) {
       task: req.body.task,
       doByDate: req.body.doByDate,
       description: req.body.description,
+      status: "TODO"
     },
     (err, result) => {
       if (err) {
@@ -42,6 +43,23 @@ router.post("/", function (req, res, next) {
   );
 
   res.redirect("/");
+});
+
+router.post("/done/:todoId", function (req, res, next) {
+  
+  req.db.collection("todo").updateOne(
+    { _id: db.ObjectId(req.params.todoId) },
+    { $set: {
+      status: "DONE"
+    }},
+    (err, result) => {
+      if (err) {
+        console.log(err);
+        throw err;
+      }
+    }
+  );
+  res.sendStatus(200);
 });
 
 module.exports = router;

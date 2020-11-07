@@ -19,7 +19,7 @@
 
     <div class="container">
       <p>
-        <a class="btn btn-primary" data-toggle="collapse" href="#showAddCard" role="button" aria-expanded="false" aria-controls="showAddCard">Add To-do</a>
+        <a class="btn btn-primary" data-toggle="collapse" href="#showAddCard" role="button" aria-expanded="false" aria-controls="showAddCard">Show</a>
       </p>
       <div class="card">
         <div class="collapse multi-collapse" id="showAddCard">
@@ -34,7 +34,7 @@
 
                 <div class="form-group col-xs-12 col-md-4">
                   <label for="todoDate">Do-by</label>
-                  <input class="form-control" type="date" value="2011-08-19" id="doByDate" name="doByDate" required="required">
+                  <input class="form-control" type="date" value="" id="doByDate" name="doByDate" required="required">
                 </div>
               </div>
 
@@ -60,12 +60,21 @@
         </thead>
         <tbody>
           {% for todo in data %}
-            <tr>
-              <td scope="row">
-                <p>{{ todo.task }}</p>
+            <tr id="{{ todo._id }}">
+              <td scope="row" >
+                <h5>{{ todo.task }}</h5>
                 <p>{{ todo.description }}</p>
               </td>
               <td>{{ todo.doByDate }}</td>
+
+              <td>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="doneCheckbox-{{ todo._id }}" {% if todo.status == 'DONE' %} checked {% endif %} >
+                  <label class="form-check-label" for="doneCheckbox">
+                    Done
+                  </label>
+                </div>
+              </td>
             </tr>
           {% endfor %}
         </tbody>
@@ -77,6 +86,7 @@
     <!-- jQuery and JS bundle w/ Popper.js -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="/public/todo.js"></script>
   </body>
 
 </html>

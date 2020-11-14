@@ -1,0 +1,32 @@
+{% macro display(list) %}
+  <br>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Task</th>
+        <th scope="col">Do By</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for todo in list %}
+        <tr id="{{ todo._id }}">
+          <td scope="row">
+            <h5>{{ todo.task }}</h5>
+            <p>{{ todo.description }}</p>
+          </td>
+          <td>{{ todo.doByDate }}</td>
+
+          <td>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="doneCheckbox-{{ todo._id }}" {% if todo.status == 'DONE' %} checked="checked" {% endif %}>
+              <label class="form-check-label" for="doneCheckbox">
+                Done
+              </label>
+            </div>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endmacro %}

@@ -19,9 +19,15 @@ router.get("/", function (req, res, next) {
           data: "",
         });
       } else {
+
+        let todos = {
+          open : result.filter(t => t.status !== 'DONE'),
+          done: result.filter(t => t.status == 'DONE')
+        };
+
         res.render("index", {
           title: "To Do List",
-          data: result,
+          todos,
         });
       }
     });

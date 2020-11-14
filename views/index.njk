@@ -1,3 +1,5 @@
+{% import "_todo-list.njk" as todoList %}
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -51,34 +53,25 @@
         </div>
       </form>
 
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Task</th>
-            <th scope="col">Do By</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for todo in data %}
-            <tr id="{{ todo._id }}">
-              <td scope="row" >
-                <h5>{{ todo.task }}</h5>
-                <p>{{ todo.description }}</p>
-              </td>
-              <td>{{ todo.doByDate }}</td>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="toBeDone-tab" data-toggle="tab" href="#toBeDone" role="tab" aria-controls="toBeDone" aria-selected="true">To-Do</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="done-tab" data-toggle="tab" href="#done" role="tab" aria-controls="done" aria-selected="false">Done</a>
+        </li>
+      </ul>
 
-              <td>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="doneCheckbox-{{ todo._id }}" {% if todo.status == 'DONE' %} checked {% endif %} >
-                  <label class="form-check-label" for="doneCheckbox">
-                    Done
-                  </label>
-                </div>
-              </td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+      <div class="tab-content" id="todoTabs">
+        <div class="tab-pane fade show active" id="toBeDone" role="tabpanel" aria-labelledby="toBeDone-tab">
+          {{ todoList.display(todos.open) }}
+        </div>
+        <div class="tab-pane fade" id="done" role="tabpanel" aria-labelledby="done-tab">
+          {{ todoList.display(todos.done) }}
+        </div>
+      </div>
+      
+
     </div>
 
     <!-- CSS -->
